@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using execute_intraday.services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,17 @@ namespace execute_intraday.Controllers
     [ApiController]
     public class ExecuteIntra : ControllerBase
     {
+        private IZerodhaService _zerodhaService;
+        public ExecuteIntra(IZerodhaService zerodhaService)
+        {
+            _zerodhaService = zerodhaService;
+
+        }
         // GET: api/<ExecuteIntra>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            return _zerodhaService.zerodhatrying();
         }
 
         // GET api/<ExecuteIntra>/5
